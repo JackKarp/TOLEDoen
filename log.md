@@ -33,4 +33,15 @@ device = ssd1309(serial)
 ## Tues 7/23
 > [!Warning]
 > Somehow the variable names get worse and worse as time goes on :(
-### Notes
+### Notes:
+- created canvas access through canvas API
+- set up a button push using interrupts
+- created new heat sink and aesthestic wifi dongle
+- connected canvas to the screen itself and showed live data
+
+### Future:
+- connect to glasses
+- add alternate pages with other data
+  - weather, notes, something else
+- add camera and allow it to process data
+- add mike for subtitles
