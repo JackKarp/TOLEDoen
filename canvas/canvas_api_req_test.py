@@ -17,6 +17,7 @@ envdict = read_envfile()
 # print(envdict[api_url_string])
 
 canvas = Canvas(envdict[api_url_string], envdict[api_key_string])
-stuff = canvas.get_todo_items()
+stuff = canvas.get_courses()
 for thing in stuff:
-    print(thing)
+    if thing.course_code:
+        print(thing)
