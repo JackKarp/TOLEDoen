@@ -1,4 +1,5 @@
 from canvasapi import Canvas
+import button2
 
 api_url_string = "apiurl"
 api_key_string = "apikey"
@@ -23,3 +24,4 @@ for thing in stuff:
         print(thing)
     except:
         continue
+button2.go(stuff[0])
