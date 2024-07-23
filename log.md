@@ -29,3 +29,8 @@ device = ssd1309(serial)
 - Find interfaces - buttons, touchscreens, dials
 - attach to glasses?
   - Figure out where to display information
+
+## Tues 7/23
+> [!Warning]
+> Somehow the variable names get worse and worse as time goes on :(
+### Notes
