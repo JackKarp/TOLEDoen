@@ -19,5 +19,7 @@ envdict = read_envfile()
 canvas = Canvas(envdict[api_url_string], envdict[api_key_string])
 stuff = canvas.get_courses()
 for thing in stuff:
-    if thing.course_code:
+    try:
         print(thing)
+    except:
+        continue
