@@ -1,5 +1,8 @@
 from canvasapi import Canvas
+
 import button2
+
+
 
 api_url_string = "apiurl"
 api_key_string = "apikey"
@@ -22,6 +25,7 @@ stuff = canvas.get_courses()
 for thing in stuff:
     try:
         print(thing)
-    except:
+    except Exception as e:
+        print(e)
         continue
-button2.go(stuff[0])
+button2.go(stuff[0].name)
