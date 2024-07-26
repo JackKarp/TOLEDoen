@@ -25,7 +25,7 @@ def my_callback(channel):
 
 GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=my_callback, bouncetime=300)
 
-def run(s):
+def render(s):
     print("running 2")
     with canvas(device) as draw:
         draw.text((0,0),s,fill="white")
@@ -42,7 +42,7 @@ def go(s):
     while butt:
         try:
             print("running")
-            run(s)
+            render(s)
         except StopException:
             print("excepted")
             break

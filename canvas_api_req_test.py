@@ -16,16 +16,12 @@ def read_envfile():
             dict[stripped_line[0]] = stripped_line[1] 
     return dict
 
-
 envdict = read_envfile()
 # print(envdict[api_url_string])
 
-canvas = Canvas(envdict[api_url_string], envdict[api_key_string])
-stuff = canvas.get_courses()
-for thing in stuff:
-    try:
-        print(thing)
-    except Exception as e:
-        print(e)
-        continue
-button2.go(stuff[0].name)
+def get_content():
+    canvas = Canvas(envdict[api_url_string], envdict[api_key_string])
+    return canvas.get_todo_items()
+
+
+button2.go(get_content()[0].name)
