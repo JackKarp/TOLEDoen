@@ -3,27 +3,27 @@ from luma.core.interface.serial import spi
 from luma.core.render import canvas
 from luma.oled.device import ssd1309
 
-serial = spi(port=0, address=0)
-device = ssd1309(serial)
+# Initializes GPIO pins and button detection
+device = None
+def initialize_device():
+    serial = spi(port=0, address=0)
 
-GPIO.setmode(GPIO.BCM)
-button_pin = 5
+    GPIO.setmode(GPIO.BCM)
+    button_pin = 5
 
-GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-butt = True
+    def my_callback(channel):
+        print("button")
+        raise StopException("StopException: button pressed dummy")
+
+    GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=my_callback, bouncetime=300)
+
+    device = ssd1309(serial)
 
 class StopException(Exception):
     def __init__(self, message):
         self.message = message
         print("stopped")
-
-
-def my_callback(channel):
-    print("button")
-    butt = False
-    raise StopException("StopException: button pressed dummy")
-
-GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=my_callback, bouncetime=300)
 
 def render(s):
     print("running 2")
@@ -33,13 +33,9 @@ def render(s):
 
 
 def go(s):
-    GPIO.setmode(GPIO.BCM)
-    button_pin = 5
-
-    GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    butt = True
+    initialize_device()
     print("going")
-    while butt:
+    while True:
         try:
             print("running")
             render(s)
