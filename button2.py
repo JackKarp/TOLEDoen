@@ -19,6 +19,7 @@ def initialize_device():
     GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=my_callback, bouncetime=300)
 
     device = ssd1309(serial)
+    return device
 
 class StopException(Exception):
     def __init__(self, message):
@@ -33,7 +34,7 @@ def render(s):
 
 
 def go(s):
-    initialize_device()
+    device = initialize_device()
     print("going")
     while True:
         try:

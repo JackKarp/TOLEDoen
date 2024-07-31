@@ -21,7 +21,7 @@ envdict = read_envfile()
 
 def get_content():
     canvas = Canvas(envdict[api_url_string], envdict[api_key_string])
-    return canvas.get_todo_items()
+    return canvas.get_courses()
 
 
 button2.go(get_content()[0].name)
