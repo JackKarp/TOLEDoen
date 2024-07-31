@@ -35,8 +35,8 @@ def render(s):
     print("running 2")
     serial = spi(port=0, address=0)
 
-    GPIO.setmode(GPIO.BCM)
-    button_pin = 5
+    GPIO.setmode(GPIO.BOARD)
+    button_pin = 29
 
     def my_callback(channel):
         print("button")
