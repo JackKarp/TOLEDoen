@@ -52,9 +52,9 @@ def render(s):
         print("drawing")
 
 try:
+    render(get_content()[0].name) 
     while True:
-        print("running")
-        render(get_content()[0].name) 
+        print("running")    
 except StopException:
     print("excepted")
 finally:
