@@ -46,17 +46,16 @@ def render(s):
     GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=my_callback, bouncetime=300)
 
     device = ssd1309(serial)
-    
+
     with canvas(device) as draw:
         draw.text((0,0),s,fill="white")
         print("drawing")
 
-while True:
-        try:
-            print("running")
-            render(get_content()[0].name)
-        except StopException:
-            print("excepted")
-            break
-        finally:
-            GPIO.cleanup()
+try:
+    while True:
+        print("running")
+        render(get_content()[0].name) 
+except StopException:
+    print("excepted")
+finally:
+    GPIO.cleanup()
