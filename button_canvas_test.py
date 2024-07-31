@@ -55,10 +55,10 @@ def render(s):
 try:
     render(get_content()[0].name) 
     while True:
-        if(GPIO.input(5)){
+        if(GPIO.input(5)):
             print("broke")
             break
-        }
+        
 except StopException:
     print("excepted")
 finally:
