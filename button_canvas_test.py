@@ -47,6 +47,7 @@ def get_content():
 
 def render(s, device):
     print("running 2")
+    GPIO.setmode(GPIO.BCM)
     with canvas(device) as draw:
         draw.text((0,0),s,fill="white")
         print("drawing")
