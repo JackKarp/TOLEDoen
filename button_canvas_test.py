@@ -55,9 +55,7 @@ def render(s):
 try:
     render(get_content()[0].name) 
     while True:
-        if(GPIO.input(5)):
-            print("broke")
-            break
+        GPIO.wait_for_edge(5,GPIO.RISING)
         
 except StopException:
     print("excepted")
