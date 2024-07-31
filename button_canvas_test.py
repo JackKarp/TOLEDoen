@@ -5,20 +5,6 @@ from luma.oled.device import ssd1309
 
 from canvasapi import Canvas
 
-serial = spi(port=0, address=0)
-
-GPIO.setmode(GPIO.BCM)
-button_pin = 5
-
-def my_callback(channel):
-    print("button")
-    raise StopException("StopException: button pressed dummy")
-
-GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=my_callback, bouncetime=300)
-
-device = ssd1309(serial)
-
 class StopException(Exception):
     def __init__(self, message):
         self.message = message
@@ -45,9 +31,22 @@ def get_content():
     canvas = Canvas(envdict[api_url_string], envdict[api_key_string])
     return canvas.get_courses()
 
-def render(s, device):
+def render(s):
     print("running 2")
+    serial = spi(port=0, address=0)
+
     GPIO.setmode(GPIO.BCM)
+    button_pin = 5
+
+    def my_callback(channel):
+        print("button")
+        raise StopException("StopException: button pressed dummy")
+
+    GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=my_callback, bouncetime=300)
+
+    device = ssd1309(serial)
+    
     with canvas(device) as draw:
         draw.text((0,0),s,fill="white")
         print("drawing")
@@ -55,7 +54,7 @@ def render(s, device):
 while True:
         try:
             print("running")
-            render(get_content()[0].name, device)
+            render(get_content()[0].name)
         except StopException:
             print("excepted")
             break
