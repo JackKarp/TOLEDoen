@@ -26,7 +26,7 @@ class StopException(Exception):
         self.message = message
         print("stopped")
 
-def render(s):
+def render(s, device):
     print("running 2")
     with canvas(device) as draw:
         draw.text((0,0),s,fill="white")
@@ -39,7 +39,7 @@ def go(s):
     while True:
         try:
             print("running")
-            render(s)
+            render(s, device)
         except StopException:
             print("excepted")
             break
