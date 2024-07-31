@@ -36,7 +36,7 @@ def render(s):
     GPIO.cleanup()
     serial = spi(port=0, address=0)
 
-    GPIO.setmode(GPIO.BCM)
+    # GPIO.setmode(GPIO.BCM)
     button_pin = 5
 
     def my_callback(channel):
