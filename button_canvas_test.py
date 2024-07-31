@@ -42,8 +42,8 @@ def render(s):
         print("button")
         raise StopException("StopException: button pressed dummy")
 
-    GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=my_callback)
+    GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.add_event_detect(button_pin, GPIO.FALLING, callback=my_callback, bouncetime=100)
 
     device = ssd1309(serial)
 
