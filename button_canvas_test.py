@@ -54,7 +54,7 @@ def render(s, device):
 while True:
         try:
             print("running")
-            render(get_content(), device)
+            render(get_content()[0].name, device)
         except StopException:
             print("excepted")
             break
