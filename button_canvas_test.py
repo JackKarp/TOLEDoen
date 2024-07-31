@@ -9,7 +9,7 @@ class StopException(Exception):
     def __init__(self, message):
         self.message = message
         print("stopped")
-        
+
 GPIO.cleanup()
         
 api_url_string = "apiurl"
@@ -33,6 +33,7 @@ def get_content():
 
 def render(s):
     print("running 2")
+    GPIO.cleanup()
     serial = spi(port=0, address=0)
 
     GPIO.setmode(GPIO.BOARD)
