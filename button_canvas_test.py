@@ -9,8 +9,8 @@ class StopException(Exception):
     def __init__(self, message):
         self.message = message
         print("stopped")
-
-
+        
+GPIO.cleanup()
         
 api_url_string = "apiurl"
 api_key_string = "apikey"
