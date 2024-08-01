@@ -6,6 +6,7 @@ from luma.oled.device import ssd1309
 from canvasapi import Canvas
 
 def button_callback(channel):
+    global running
     print("Button was pushed!")
     if(running):
         device.clear()
