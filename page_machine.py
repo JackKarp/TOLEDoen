@@ -1,17 +1,19 @@
-from statemachine import StateMachine, State
-
-class PageMachine(StateMachine):
-    "A machine that switches between pages (states)"
-    home = State(initial=True)
-    canvas = State()
-    weather = State()
-
-    cycle = (
-    home.to(canvas)
-    | canvas.to(weather)
-    | weather.to(home)
-    )
-
-    def before_cycle(self, event: str, source: State, target: State, message: str = ""):
-        message = ". " + message if message else ""
-        return f"Running {event} from {source.id} to {target.id}{message}"
+# PageMachine should start with an initializing state that initializes the GPIO pins
+class PageMachine():
+    
+    def __init__(self, page_list) -> None:
+        self.states = page_list
+        self.on_init()
+        self.current_index = 0
+        self.current_state = self.states[0]
+        return
+    def on_init():
+        "Write pins and set up GPIO"
+        pass
+    
+    def cycle(self):
+        self.current_index += 1
+        self.current_index = self.current_index % len(self.states)
+        self.current_state = self.states[self.current_index]
+        self.current_state.on_enter_func()
+        pass
