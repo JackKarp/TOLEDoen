@@ -7,7 +7,15 @@ from canvasapi import Canvas
 
 def button_callback(channel):
     print("Button was pushed!")
-    device.clear()
+    if(running):
+        device.clear()
+        running = False
+    else:
+        with canvas(device) as draw:
+            draw.text((0,0),get_content()[0].name,fill="white")
+            print("drawing")
+        running = True
+    
 
 api_url_string = "apiurl"
 api_key_string = "apikey"
@@ -36,7 +44,6 @@ GPIO.add_event_detect(15,GPIO.RISING,callback=button_callback) # Setup event on 
 
 serial = spi(port=0, address=0)
 device = ssd1309(serial)
-with canvas(device) as draw:
-    draw.text((0,0),get_content()[0].name,fill="white")
-    print("drawing")
+running = False
+button_callback(15)
 message = input("Press enter to quit\n\n") # Run until someone presses enter
