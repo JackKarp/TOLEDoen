@@ -31,7 +31,7 @@ def get_content():
     canvas = Canvas(envdict[api_url_string], envdict[api_key_string])
     return canvas.get_courses()
 
-async def render(s):
+def render(s):
     print("running 2")
     GPIO.cleanup()
     serial = spi(port=0, address=0)
