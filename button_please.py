@@ -43,7 +43,7 @@ try:
     serial = spi(port=0, address=0)
     device = ssd1309(serial)
     with canvas(device) as draw:
-        draw.text((0,0),s,fill="white")
+        draw.text((0,0),get_content()[0].name,fill="white")
         print("drawing")
     message = input("Press enter to quit\n\n") # Run until someone presses enter
 except StopException:
