@@ -8,15 +8,7 @@ from canvasapi import Canvas
 def button_callback(channel):
     print("Button was pushed!")
     device.clear()
-    raise StopException("stop it")
 
-
-class StopException(Exception):
-    def __init__(self, message):
-        self.message = message
-        print("stopped")
-
-        
 api_url_string = "apiurl"
 api_key_string = "apikey"
 
@@ -42,15 +34,9 @@ GPIO.setup(15, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # Set pin 10 to be an input 
 
 GPIO.add_event_detect(15,GPIO.RISING,callback=button_callback) # Setup event on pin 10 rising edge
 
-try:
-    serial = spi(port=0, address=0)
-    device = ssd1309(serial)
-    with canvas(device) as draw:
-        draw.text((0,0),get_content()[0].name,fill="white")
-        print("drawing")
-    message = input("Press enter to quit\n\n") # Run until someone presses enter
-except StopException:
-    print('excepted')
-    device.clear()
-finally:
-    GPIO.cleanup() # Clean up
+serial = spi(port=0, address=0)
+device = ssd1309(serial)
+with canvas(device) as draw:
+    draw.text((0,0),get_content()[0].name,fill="white")
+    print("drawing")
+message = input("Press enter to quit\n\n") # Run until someone presses enter
