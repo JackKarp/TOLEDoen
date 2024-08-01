@@ -49,5 +49,6 @@ try:
     message = input("Press enter to quit\n\n") # Run until someone presses enter
 except StopException:
     print('excepted')
+    device.clear()
 finally:
     GPIO.cleanup() # Clean up
