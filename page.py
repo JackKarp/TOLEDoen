@@ -1,8 +1,6 @@
 class Page():
-    def __init__(self) -> None:
+    def __init__(self, name, on_enter_func) -> None:
         "Necessary Init"
-        pass
-
-    def on_enter_func() -> None:
-        "Function that runs when entering this state"
+        self.name = name
+        self.on_enter_func = on_enter_func
         pass
