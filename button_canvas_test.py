@@ -46,7 +46,7 @@ def render(s):
     GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     # GPIO.add_event_detect(button_pin, GPIO.RISING, callback=my_callback, bouncetime=100)
 
-    device = ssd1309(serial)
+    
 
     with canvas(device) as draw:
         draw.text((0,0),s,fill="white")
