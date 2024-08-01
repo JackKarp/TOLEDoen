@@ -31,7 +31,7 @@ def get_content():
     canvas = Canvas(envdict[api_url_string], envdict[api_key_string])
     return canvas.get_courses()
 
-def render(s):
+async def render(s):
     print("running 2")
     GPIO.cleanup()
     serial = spi(port=0, address=0)
@@ -39,14 +39,14 @@ def render(s):
     # GPIO.setmode(GPIO.BCM)
     button_pin = 5
 
-    def my_callback(channel):
+    async def my_callback(channel):
         print("button")
         raise StopException("StopException: button pressed dummy")
 
     GPIO.setup(button_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    # GPIO.add_event_detect(button_pin, GPIO.RISING, callback=my_callback, bouncetime=100)
+    GPIO.add_event_detect(button_pin, GPIO.RISING, callback=my_callback, bouncetime=100)
 
-    
+    device = ssd1309(serial)
 
     with canvas(device) as draw:
         draw.text((0,0),s,fill="white")
