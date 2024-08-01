@@ -7,7 +7,9 @@ from canvasapi import Canvas
 
 def button_callback(channel):
     print("Button was pushed!")
+    device.clear()
     raise StopException("stop it")
+
 
 class StopException(Exception):
     def __init__(self, message):
