@@ -3,7 +3,7 @@ from luma.core.render import canvas
 from luma.oled.device import ssd1309
 
 serial = spi(port=0, address=0)
-device = ssd1309(serial)
+d = ssd1309(serial)
 
 import math
 import time
@@ -17,7 +17,7 @@ def posn(angle, arm_length):
     return (dx, dy)
 
 
-def main():
+def run_clock(device):
     today_last_time = "Unknown"
     tz = pytz.timezone("America/Los_Angeles")
     while True:
@@ -62,6 +62,6 @@ def main():
 
 if __name__ == "__main__":
     try:
-        main()
+        run_clock(d)
     except KeyboardInterrupt:
         pass
