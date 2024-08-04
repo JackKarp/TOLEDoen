@@ -16,5 +16,12 @@ class PageMachine():
         self.current_index = self.current_index % len(self.states)
         self.current_state = self.states[self.current_index]
         print(self.current_state.name)
-        self.current_state.on_enter_func(self.device)
+        if self.current_state.flag:
+            self.current_state.flag[0] = False
+
+        # Checks for a flag object in the current page and runs it into the enter_func if there is one
+        if self.current_state.flag:
+            self.current_state.on_enter_func(self.device, self.current_state.flag)
+        else:
+            self.current_state.on_enter_func(self.device)
         pass
