@@ -23,6 +23,6 @@ class PageMachine():
         # Checks for a flag object in the current page and runs it into the enter_func if there is one
         if self.current_state.is_flaggable:
             self.current_state.flag[0] = True
-            self.current_state.on_enter_func(self.device, self.current_state.flag)
+            self.current_state.on_enter_func(self.device, self.current_state)
         else:
             self.current_state.on_enter_func(self.device)
