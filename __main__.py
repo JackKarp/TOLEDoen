@@ -40,7 +40,8 @@ def clean_cycle(pin):
     global pm
     pm.cycle()
     
-
+def nothing():
+    pass
 
 def init_pins(pin):
     GPIO.setwarnings(False) # Ignore warning for now
@@ -55,4 +56,4 @@ d = init_pins(button_pin)
 pm = PageMachine(pages, device=d)
 GPIO.add_event_detect(button_pin,GPIO.RISING,callback=clean_cycle,bouncetime=50) # Setup event on pin 10 rising edge
 while True:
-    hi = None
+    nothing()
