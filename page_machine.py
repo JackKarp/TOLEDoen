@@ -15,6 +15,6 @@ class PageMachine():
         self.current_index += 1
         self.current_index = self.current_index % len(self.states)
         self.current_state = self.states[self.current_index]
-        print(self.current_state)
+        print(self.current_state.name)
         self.current_state.on_enter_func(self.device)
         pass
