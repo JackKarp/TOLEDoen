@@ -34,6 +34,7 @@ def make_page_list():
 
 def clean_cycle(pin):
     GPIO.cleanup()
+    init_pins(pin)
     global pm
     pm.cycle()
 
