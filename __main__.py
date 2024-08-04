@@ -9,7 +9,7 @@ from luma.core.interface.serial import spi
 from luma.core.render import canvas
 from luma.oled.device import ssd1309
 
-from clock import run_clock, posn
+from clock import render_clock
 import canvas
 from off import clear_display
 
@@ -28,7 +28,7 @@ def make_page_list():
 
 
     page_list.append(Page("Off", on_enter_func= lambda x: clear_display))
-    page_list.append(Page("Clock", on_enter_func= run_clock, is_flaggable=True))
+    page_list.append(Page("Clock", on_enter_func= render_clock))
     page_list.append(Page("Canvas", on_enter_func=canvas.run_canvas))
     page_list.append(Page("Weather", on_enter_func=lambda x: print("placeholder")))
     return page_list
@@ -53,8 +53,4 @@ d = init_pins(button_pin)
 pm = PageMachine(pages, device=d)
 GPIO.add_event_detect(button_pin,GPIO.RISING,callback=clean_cycle,bouncetime=50) # Setup event on pin 10 rising edge
 while True:
-    if pm.current_state.is_flaggable:
-            pm.current_state.flag[0] = True
-            pm.current_state.on_enter_func(pm.device, pm.current_state)
-    else:
-        pm.current_state.on_enter_func(pm.device)
+    pm.current_state.on_enter_func(pm.device)

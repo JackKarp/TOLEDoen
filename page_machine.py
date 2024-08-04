@@ -12,8 +12,6 @@ class PageMachine():
         return
     
     def cycle(self) -> None:
-        if self.current_state.is_flaggable:
-            self.current_state.flag[0] = False
 
         self.current_index += 1
         self.current_index = self.current_index % len(self.states)
@@ -21,8 +19,4 @@ class PageMachine():
         print(self.current_state.name)
 
         # Checks for a flag object in the current page and runs it into the enter_func if there is one
-        if self.current_state.is_flaggable:
-            self.current_state.flag[0] = True
-            self.current_state.on_enter_func(self.device, self.current_state)
-        else:
-            self.current_state.on_enter_func(self.device)
+        self.current_state.on_enter_func(self.device)
