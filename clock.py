@@ -32,7 +32,7 @@ def run_clock(device):
                 now = now_gmt.astimezone(tz)
                 today_date = now.strftime("%d %b %y")
 
-                margin = 4
+                margin = 8
 
                 cx = 30
                 cy = min(device.height, 64) / 2
