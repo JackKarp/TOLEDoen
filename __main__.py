@@ -32,6 +32,12 @@ def make_page_list():
     page_list.append(Page("Weather", on_enter_func=lambda x: print("placeholder")))
     return page_list
 
+def clean_cycle(pin):
+    GPIO.cleanup()
+    global pm
+    pm.cycle()
+
+
 def init_pins(pin):
     GPIO.setwarnings(False) # Ignore warning for now
     GPIO.setmode(GPIO.BCM) # Use number pin numbering
@@ -43,6 +49,6 @@ def init_pins(pin):
 pages = make_page_list()
 d = init_pins(button_pin)
 pm = PageMachine(pages, device=d)
-GPIO.add_event_detect(button_pin,GPIO.RISING,callback=lambda x: pm.cycle,bouncetime=300) # Setup event on pin 10 rising edge
+GPIO.add_event_detect(button_pin,GPIO.RISING,callback=clean_cycle,bouncetime=300) # Setup event on pin 10 rising edge
 pm.cycle()
 pm.cycle()
