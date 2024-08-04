@@ -24,7 +24,7 @@ def make_page_list():
     page_list = []
 
 
-    page_list.append(Page("Off", on_enter_func= lambda x: clear_display))
+    page_list.append(Page("Off", on_enter_func= clear_display))
     page_list.append(Page("Clock", on_enter_func= render_clock))
     page_list.append(Page("Canvas", on_enter_func=canvas.run_canvas))
     page_list.append(Page("Weather", on_enter_func=lambda x: print("placeholder")))
