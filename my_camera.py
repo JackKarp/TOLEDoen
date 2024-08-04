@@ -1,4 +1,4 @@
-from picamera2 import PiCamera2, Preview
+from picamera2 import Picamera2, Preview
 
 cam = PiCamera2()
 cam.start_preview(Preview.QT)
