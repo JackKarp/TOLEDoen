@@ -20,6 +20,8 @@ button_pin = 15
 # TODO: refactor clock to be button-interruptible
 # TODO: Find some way to wait for callbacks to cycle
 
+
+# Makes a list of the pages for the page machine
 def make_page_list():
     page_list = []
 
@@ -41,6 +43,6 @@ def init_pins(pin):
 pages = make_page_list()
 d = init_pins(button_pin)
 pm = PageMachine(pages, device=d)
-GPIO.add_event_detect(button_pin,GPIO.RISING,callback=pm.cycle,bouncetime=300) # Setup event on pin 10 rising edge
+GPIO.add_event_detect(button_pin,GPIO.RISING,callback=lambda x: pm.cycle,bouncetime=300) # Setup event on pin 10 rising edge
 pm.cycle()
 pm.cycle()
