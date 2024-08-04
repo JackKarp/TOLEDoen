@@ -18,6 +18,8 @@ def posn(angle, arm_length):
 
 
 def run_clock(device, flag):
+    assert type(flag) is list
+    assert len(flag) is 1
     today_last_time = "Unknown"
     tz = pytz.timezone("America/Los_Angeles")
     while flag[0]:
