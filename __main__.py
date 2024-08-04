@@ -17,10 +17,7 @@ print("Running main")
 
 button_pin = 15
 
-# TODO: make each of these pages have an on_enter_func
-# TODO: refactor clock to be button-interruptible
-# TODO: Find some way to wait for callbacks to cycle
-
+# TODO: Refactor every page to have an on_enter_func and a while_running func
 
 # Makes a list of the pages for the page machine
 def make_page_list():
