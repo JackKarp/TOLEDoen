@@ -11,6 +11,7 @@ from luma.oled.device import ssd1309
 
 from clock import run_clock, posn
 import canvas
+from off import clear_display
 
 print("Running main")
 
@@ -26,7 +27,7 @@ def make_page_list():
     page_list = []
 
 
-    page_list.append(Page("Off", on_enter_func= lambda x: print("placeholder")))
+    page_list.append(Page("Off", on_enter_func= lambda x: clear_display))
     page_list.append(Page("Clock", on_enter_func= run_clock))
     page_list.append(Page("Canvas", on_enter_func=canvas.run_canvas))
     page_list.append(Page("Weather", on_enter_func=lambda x: print("placeholder")))
@@ -35,7 +36,7 @@ def make_page_list():
 def clean_cycle(pin):
     GPIO.cleanup()
     init_pins(pin)
-    GPIO.add_event_detect(button_pin,GPIO.RISING,callback=clean_cycle,bouncetime=300) # Setup event on pin 10 rising edge
+    GPIO.add_event_detect(pin,GPIO.RISING,callback=clean_cycle,bouncetime=300) # Setup event on pin 10 rising edge
     global pm
     pm.cycle()
 
