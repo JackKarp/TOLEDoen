@@ -28,7 +28,7 @@ def make_page_list():
 
 
     page_list.append(Page("Off", on_enter_func= lambda x: clear_display))
-    page_list.append(Page("Clock", on_enter_func= run_clock))
+    page_list.append(Page("Clock", on_enter_func= run_clock, flag=[True]))
     page_list.append(Page("Canvas", on_enter_func=canvas.run_canvas))
     page_list.append(Page("Weather", on_enter_func=lambda x: print("placeholder")))
     return page_list
@@ -53,5 +53,4 @@ pages = make_page_list()
 d = init_pins(button_pin)
 pm = PageMachine(pages, device=d)
 GPIO.add_event_detect(button_pin,GPIO.RISING,callback=clean_cycle,bouncetime=300) # Setup event on pin 10 rising edge
-pm.cycle()
-pm.cycle()
+
