@@ -30,7 +30,7 @@ def render_clock(device):
             now = now_gmt.astimezone(tz)
             today_date = now.strftime("%d %b %y")
 
-            margin = 15
+            margin = 3
 
             cx = 30
             cy = min(device.height, 64) / 2
@@ -52,7 +52,7 @@ def render_clock(device):
             draw.line((cx, cy, cx + mins[0], cy + mins[1]), fill="white")
             draw.line((cx, cy, cx + secs[0], cy + secs[1]), fill="red")
             draw.ellipse((cx - 2, cy - 2, cx + 2, cy + 2), fill="white", outline="white")
-            draw.text((2 * (cx + margin), cy - 8), today_date, fill="yellow")
+            draw.text((2 * (cx + margin), cy - 12), today_date, fill="yellow")
             draw.text((2 * (cx + margin), cy), today_time, fill="yellow")
 
 
