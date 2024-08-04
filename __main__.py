@@ -35,9 +35,6 @@ def make_page_list():
 
 def clean_cycle(pin):
     print("Callback called")
-    GPIO.cleanup()
-    init_pins(pin)
-    GPIO.add_event_detect(pin,GPIO.RISING,callback=clean_cycle,bouncetime=300) # Setup event on pin 10 rising edge
     global pm
     pm.cycle()
 
