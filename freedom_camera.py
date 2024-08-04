@@ -1,8 +1,8 @@
 import cv2
 import cvzone
 from cvzone.HandTrackingModule import HandDetector
-from picamera2 import Picamera2
-picam2 = Picamera2()
+from picamera import Picamera
+picam2 = Picamera()
 picam2.preview_configuration.main.size = (640,480)
 picam2.preview_configuration.main.format = "RGB888"
 picam2.preview_configuration.align()
