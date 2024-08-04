@@ -33,10 +33,14 @@ def make_page_list():
     page_list.append(Page("Weather", on_enter_func=lambda x: print("placeholder")))
     return page_list
 
+should_cycle = False
+
 def clean_cycle(pin):
     print("Callback called")
-    global pm
-    pm.cycle()
+    global should_cycle
+    if not should_cycle:
+        should_cycle = True
+    
 
 
 def init_pins(pin):
@@ -51,4 +55,7 @@ pages = make_page_list()
 d = init_pins(button_pin)
 pm = PageMachine(pages, device=d)
 GPIO.add_event_detect(button_pin,GPIO.RISING,callback=clean_cycle,bouncetime=300) # Setup event on pin 10 rising edge
-input("enter for off")
+while True:
+    if should_cycle:
+        pm.cycle()
+        should_cycle = False
