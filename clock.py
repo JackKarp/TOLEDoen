@@ -17,6 +17,8 @@ def posn(angle, arm_length):
     return (dx, dy)
 
 def render_clock(device):
+    today_last_time = "Unknown"
+    tz = pytz.timezone("America/Los_Angeles")
     now_gmt = datetime.datetime.now()
     now = now_gmt.astimezone(tz)
     today_date = now.strftime("%d %b %y")
@@ -55,8 +57,6 @@ def render_clock(device):
 
 
 def run_clock(device, page):
-    today_last_time = "Unknown"
-    tz = pytz.timezone("America/Los_Angeles")
     while page.flag[0]:
         render_clock(device)
         time.sleep(0.1)
