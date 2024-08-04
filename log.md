@@ -45,3 +45,46 @@ device = ssd1309(serial)
   - weather, notes, something else
 - add camera and allow it to process data
 - add mike for subtitles
+
+## Wed 7/31 - Hours 2 
+### Notes:
+- Not a lot of progress
+- Button does not work
+
+### Future: 
+- Fix button
+- Swaperoonies
+
+
+## Thur 8/1 - Hours 3
+### Notes:
+- Fixed button
+- Started on state machine
+- Started on gyro, stopped because FRC is trash
+
+### Future:
+- Camera functionality
+- Put it all together so far
+
+## Fri 8/2 - Hours 1 
+### Notes:
+- Solo loser
+- Struggled to vnc
+- Remember to vncserver-virtual every time
+- Connected camera (didn’t get it working)
+
+### Future:
+- Get camera working
+
+## Sat 8/3 - Hours 3.5
+### Notes:
+- Late at night
+- Worked on state-machine - finally worked, overusing resources though
+- Got camera working
+- No scripts could access because picamera2 then libcamera decided they didn’t want to work
+
+### Future:
+- Get camera to read images
+- Hand motions to change page
+- Cleaner page transitions
+- Split on_enter_func into on_enter and while_running
