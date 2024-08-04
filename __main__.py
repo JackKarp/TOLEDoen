@@ -53,4 +53,8 @@ d = init_pins(button_pin)
 pm = PageMachine(pages, device=d)
 GPIO.add_event_detect(button_pin,GPIO.RISING,callback=clean_cycle,bouncetime=50) # Setup event on pin 10 rising edge
 while True:
-    input("enter")
+    if pm.current_state.is_flaggable:
+            pm.current_state.flag[0] = True
+            pm.current_state.on_enter_func(pm.device, pm.current_state)
+    else:
+        pm.current_state.on_enter_func(pm.device)
