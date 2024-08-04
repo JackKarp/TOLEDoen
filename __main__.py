@@ -35,6 +35,7 @@ def make_page_list():
 def clean_cycle(pin):
     GPIO.cleanup()
     init_pins(pin)
+    GPIO.add_event_detect(button_pin,GPIO.RISING,callback=clean_cycle,bouncetime=300) # Setup event on pin 10 rising edge
     global pm
     pm.cycle()
 
