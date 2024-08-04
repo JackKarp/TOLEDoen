@@ -17,10 +17,10 @@ def posn(angle, arm_length):
     return (dx, dy)
 
 
-def run_clock(device):
+def run_clock(device, flag):
     today_last_time = "Unknown"
     tz = pytz.timezone("America/Los_Angeles")
-    while True:
+    while flag[0]:
         now_gmt = datetime.datetime.now()
         now = now_gmt.astimezone(tz)
         today_date = now.strftime("%d %b %y")
