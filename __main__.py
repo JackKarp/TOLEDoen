@@ -12,7 +12,7 @@ from luma.oled.device import ssd1309
 from clock import render_clock
 import canvas
 from off import clear_display
-import time
+import select
 
 print("Running main")
 
@@ -23,7 +23,7 @@ button_pin = 15
 def wrap_with_delay(f1, delay):
     def f2(device):
         f1(device)
-        time.sleep(delay)
+        select.select([],[],[],delay)
     return f2
 
 # Makes a list of the pages for the page machine
