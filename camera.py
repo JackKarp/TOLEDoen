@@ -22,7 +22,7 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
            #flipped = cv2.flip(frame, flipCode = -1)
            
            #Determines the frame size, 640 x 480 offers a nice balance between speed and accurate identification
-           frame1 = cv2.resize(frame, (640, 480))
+        #    frame1 = cv2.resize(frame, (640, 480))
            
            #Produces the hand framework overlay ontop of the hand, you can choose the colour here too)
            results = hands.process(cv2.cvtColor(frame1, cv2.COLOR_BGR2RGB))
