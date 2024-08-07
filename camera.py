@@ -42,7 +42,7 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
                     
                     # Using the Finger Joint Identification Image we know that point 8 represents the tip of the Index Finger
                     if point == 8 or point == 12 or point == 0 or point == 16 or point == 20:  #bottom + finger tips
-                        print(pixelCoordinatesLandmark)
+                        # print(pixelCoordinatesLandmark)
                         pos_dict[point] = pixelCoordinatesLandmark
         
         if(pos_dict[0] and pos_dict[8] and pos_dict[12] and pos_dict[16] and pos_dict[20]):
