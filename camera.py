@@ -44,10 +44,10 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
                     if point == 8 or point == 12 or point == 0 or point == 16 or point == 20:  #bottom + finger tips
                         # print(pixelCoordinatesLandmark)
                         pos_dict[point] = pixelCoordinatesLandmark
-        
+        # pos_dict is a dict of the points that make up the tips of the fingers. Each one goes to a tuple of (x,y) positions
         if(pos_dict[0] and pos_dict[8] and pos_dict[12] and pos_dict[16] and pos_dict[20]):
             height = abs(pos_dict[12][1] - pos_dict[0][1])
-
+        # Runs if pointer and middle are above, ring and pinkie are below threshold. Threshold is half of index to base.
             if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[8][0] - pos_dict[12][0]) < 20):
                 print("do something")
 
