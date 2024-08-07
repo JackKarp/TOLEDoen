@@ -10,7 +10,7 @@ from luma.core.render import canvas
 from luma.oled.device import ssd1309
 
 from clock import render_clock
-import canvas
+import canvas as cnvs
 from off import clear_display
 import select
 
@@ -33,7 +33,7 @@ def make_page_list():
 
     page_list.append(Page("Off", on_enter_func= clear_display))
     page_list.append(Page("Clock", on_enter_func= render_clock, while_running_func=wrap_with_delay(render_clock,0.1)))
-    page_list.append(Page("Canvas", on_enter_func=canvas.run_canvas))
+    page_list.append(Page("Canvas", on_enter_func=cnvs.run_canvas))
     page_list.append(Page("Weather", on_enter_func=lambda x: x))
     return page_list
 
