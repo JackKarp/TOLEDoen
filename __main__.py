@@ -37,8 +37,6 @@ def make_page_list():
     page_list.append(Page("Weather", on_enter_func=lambda x: x))
     return page_list
 
-should_cycle = False
-
 def clean_cycle(pin):
     # print("Callback called")
     global pm

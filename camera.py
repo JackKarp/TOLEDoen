@@ -2,6 +2,18 @@
 import mediapipe
 import cv2
 
+from clock import render_clock
+import canvas
+from off import clear_display
+import select
+
+from luma.core.interface.serial import spi
+from luma.core.render import canvas
+from luma.oled.device import ssd1309
+
+from page import Page
+from page_machine import PageMachine
+
 #Use MediaPipe to draw the hand framework over the top of hands it identifies in Real-Time
 drawingModule = mediapipe.solutions.drawing_utils
 handsModule = mediapipe.solutions.hands
@@ -10,6 +22,24 @@ handsModule = mediapipe.solutions.hands
 cap = cv2.VideoCapture(0)
 fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
 
+# Makes a list of the pages for the page machine
+def make_page_list():
+    page_list = []
+
+
+    page_list.append(Page("Off", on_enter_func= clear_display))
+    page_list.append(Page("Clock", on_enter_func= render_clock, while_running_func=wrap_with_delay(render_clock,0.1)))
+    page_list.append(Page("Canvas", on_enter_func=canvas.run_canvas))
+    page_list.append(Page("Weather", on_enter_func=lambda x: x))
+    return page_list
+
+serial = spi(port=0, address=0)
+device = ssd1309(serial)
+
+pages = make_page_list()
+
+pm = PageMachine(pages, device=device)
+
 #Add confidence values and extra settings to MediaPipe hand tracking. As we are using a live video stream this is not a static
 #image mode, confidence values in regards to overall detection and tracking and we will only let two hands be tracked at the same time
 #More hands can be tracked at the same time if desired but will slow down the system
@@ -17,6 +47,10 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
 
 #Create an infinite loop which will produce the live feed to our desktop and that will search for hands
     while True:
+        #run whjile running of current state
+        pm.current_state.while_running_func(pm.device)
+
+
         ret, frame = cap.read()
            #Unedit the below line if your live feed is produced upsidedown
            #flipped = cv2.flip(frame, flipCode = -1)
@@ -50,6 +84,7 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
 
             if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[8][0] - pos_dict[12][0]) < 20):
                 print("do something")
+                pm.cycle()
 
                         
                         
