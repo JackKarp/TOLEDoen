@@ -4,7 +4,7 @@ from luma.oled.device import ssd1309
 from PIL import Image, ImageDraw
 
 serial = spi(port=0, address=0)
-device = ssd1309(serial, rotate=90)
+device = ssd1309(serial, rotate=1)
 
 with canvas(device) as d:
     d.text((0,0),"testing this thing",fill="white")
