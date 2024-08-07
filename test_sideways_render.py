@@ -14,3 +14,5 @@ with canvas(device) as d:
     text = "testing this thingymajigy"
     wrapped = textwrap.wrap(text, width=11)
     d.multiline_text((0,0),'\n'.join(wrapped),fill="white")
+
+input()
