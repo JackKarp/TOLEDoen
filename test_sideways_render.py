@@ -7,6 +7,6 @@ serial = spi(port=0, address=0)
 device = ssd1309(serial, rotate=3)
 
 with canvas(device) as d:
-    d.multiline_text((0,0),"testing this thing",fill="white")
+    d.multiline_text((0,0),u"testing \n this thing",fill="white")
 
 input()
