@@ -8,8 +8,5 @@ device = ssd1309(serial)
 
 with canvas(device) as d:
     s = "test"
-    t = Image.new('L',(120, 50))
-    d.draw(t)
     d.text((0,0),s,fill="white")
-
-    t.rotate('90')
+    d._image.rotate('90')
