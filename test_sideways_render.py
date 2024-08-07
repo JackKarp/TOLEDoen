@@ -9,4 +9,4 @@ device = ssd1309(serial)
 with canvas(device) as d:
     s = "test"
     d.text((0,0),s,fill="white")
-    d._image.rotate('90')
+    d._image.rotate(90)
