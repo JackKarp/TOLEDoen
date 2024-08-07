@@ -27,7 +27,7 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
            #Produces the hand framework overlay ontop of the hand, you can choose the colour here too)
         results = hands.process(cv2.cvtColor(frame1, cv2.COLOR_BGR2RGB))
 
-        pos_dict = {}
+        pos_dict = {0:(0,0),8:(0,0),12:(0,0),16:(0,0),20:(0,0)}
            
            #In case the system sees multiple hands this if statment deals with that and produces another hand overlay
         if results.multi_hand_landmarks != None:
