@@ -5,10 +5,8 @@ from PIL import Image, ImageDraw
 
 serial = spi(port=0, address=0)
 device = ssd1309(serial)
-
-with canvas(device) as d:
-    s = "test"
-    d.text((0,0),s,fill="white")
-    d._image.rotate(90)
+img = Image.new('L', (120, 50))
+img.rotate(90)
+device.display(img)
 
 input()
