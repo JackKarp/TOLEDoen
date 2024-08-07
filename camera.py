@@ -22,6 +22,12 @@ handsModule = mediapipe.solutions.hands
 cap = cv2.VideoCapture(0)
 fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
 
+def wrap_with_delay(f1, delay):
+    def f2(device):
+        f1(device)
+        select.select([],[],[],delay)
+    return f2
+
 # Makes a list of the pages for the page machine
 def make_page_list():
     page_list = []
