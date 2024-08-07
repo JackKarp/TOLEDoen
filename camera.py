@@ -26,6 +26,8 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
            
            #Produces the hand framework overlay ontop of the hand, you can choose the colour here too)
         results = hands.process(cv2.cvtColor(frame1, cv2.COLOR_BGR2RGB))
+
+        pos_dict = {}
            
            #In case the system sees multiple hands this if statment deals with that and produces another hand overlay
         if results.multi_hand_landmarks != None:
@@ -33,19 +35,27 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
                 drawingModule.draw_landmarks(frame1, handLandmarks, handsModule.HAND_CONNECTIONS)
                 
                 #Below is Added Code to find and print to the shell the Location X-Y coordinates of Index Finger, Uncomment if desired
-                #for point in handsModule.HandLandmark:
+                for point in handsModule.HandLandmark:
                     
-                    #normalizedLandmark = handLandmarks.landmark[point]
-                    #pixelCoordinatesLandmark= drawingModule._normalized_to_pixel_coordinates(normalizedLandmark.x, normalizedLandmark.y, 640, 480)
+                    normalizedLandmark = handLandmarks.landmark[point]
+                    pixelCoordinatesLandmark= drawingModule._normalized_to_pixel_coordinates(normalizedLandmark.x, normalizedLandmark.y, 640, 480)
                     
-                    #Using the Finger Joint Identification Image we know that point 8 represents the tip of the Index Finger
-                    #if point == 8:
-                        #print(point)
-                        #print(pixelCoordinatesLandmark)
-                        #print(normalizedLandmark)
+                    # Using the Finger Joint Identification Image we know that point 8 represents the tip of the Index Finger
+                    if point == 8 or point == 12 or point == 0 or point == 16 or point == 20:  #bottom + finger tips
+                        print(pixelCoordinatesLandmark)
+                        pos_dict[point] = pixelCoordinatesLandmark
+        
+
+        height = abs(pos_dict[12] - pos_dict[0])
+
+        if(abs(pos_dict[8] - pos_dict[0]) > height/2 and abs(pos_dict[12] - pos_dict[0]) > height/2 and abs(pos_dict[20] - pos_dict[0]) < height/2 and abs(pos_dict[16] - pos_dict[0]) < height/2):
+            print("do something")
+
+                        
+                        
         
         #Below shows the current frame to the desktop 
-        cv2.imshow("Frame", frame1);
+        cv2.imshow("Frame", frame1)
         key = cv2.waitKey(1) & 0xFF
         
         #Below states that if the |q| is press on the keyboard it will stop the system
