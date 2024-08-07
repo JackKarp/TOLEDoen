@@ -45,11 +45,11 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
                         print(pixelCoordinatesLandmark)
                         pos_dict[point] = pixelCoordinatesLandmark
         
+        if(pos_dict[0] and pos_dict[8] and pos_dict[12] and pos_dict[16] and pos_dict[20]):
+            height = abs(pos_dict[12] - pos_dict[0])
 
-        height = abs(pos_dict[12] - pos_dict[0])
-
-        if(abs(pos_dict[8] - pos_dict[0]) > height/2 and abs(pos_dict[12] - pos_dict[0]) > height/2 and abs(pos_dict[20] - pos_dict[0]) < height/2 and abs(pos_dict[16] - pos_dict[0]) < height/2):
-            print("do something")
+            if(abs(pos_dict[8] - pos_dict[0]) > height/2 and abs(pos_dict[12] - pos_dict[0]) > height/2 and abs(pos_dict[20] - pos_dict[0]) < height/2 and abs(pos_dict[16] - pos_dict[0]) < height/2):
+                print("do something")
 
                         
                         
