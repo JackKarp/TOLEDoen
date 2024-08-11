@@ -19,4 +19,5 @@ class PageMachine():
         print(self.current_state.name)
 
         # Checks for a flag object in the current page and runs it into the enter_func if there is one
-        await self.current_state.on_enter_func(self.device)
+        content = await self.current_state.on_enter_func(self.device)
+        return content
