@@ -55,6 +55,6 @@ def init_pins(pin):
 pages = make_page_list()
 d = init_pins(button_pin)
 pm = PageMachine(pages, device=d)
-GPIO.add_event_detect(button_pin,GPIO.RISING,callback=lambda : pm.cycle(),bouncetime=100) # Setup event on pin 10 rising edge
+GPIO.add_event_detect(button_pin,GPIO.RISING,callback=lambda pin: pm.cycle(),bouncetime=100) # Setup event on pin 10 rising edge
 while True:
     pm.current_state.while_running_func(pm.device)
