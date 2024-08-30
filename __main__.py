@@ -39,10 +39,10 @@ def make_page_list():
 
 should_cycle = False
 
-def clean_cycle(pin):
+async def clean_cycle(pin):
     # print("Callback called")
     global pm
-    pm.cycle()
+    await pm.cycle()
 
 def init_pins(pin):
     GPIO.setwarnings(False) # Ignore warning for now
