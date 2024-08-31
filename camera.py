@@ -67,7 +67,7 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
            #Produces the hand framework overlay ontop of the hand, you can choose the colour here too)
         results = hands.process(cv2.cvtColor(frame1, cv2.COLOR_BGR2RGB))
 
-        pos_dict = {0:(0,0),8:(0,0),12:(0,0),16:(0,0),20:(0,0)}
+        pos_dict = {0:(0,0),4:(0,0),8:(0,0),12:(0,0),16:(0,0),20:(0,0)}
            
            #In case the system sees multiple hands this if statment deals with that and produces another hand overlay
         if results.multi_hand_landmarks != None:
@@ -81,7 +81,7 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
                     pixelCoordinatesLandmark= drawingModule._normalized_to_pixel_coordinates(normalizedLandmark.x, normalizedLandmark.y, 640, 480)
                     
                     # Using the Finger Joint Identification Image we know that point 8 represents the tip of the Index Finger
-                    if point == 8 or point == 12 or point == 0 or point == 16 or point == 20:  #bottom + finger tips
+                    if point == 8 or point == 12 or point == 0 or point == 16 or point == 20 or point == 4:  #bottom + finger tips
                         # print(pixelCoordinatesLandmark)
                         pos_dict[point] = pixelCoordinatesLandmark
         
@@ -90,7 +90,7 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
             if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[8][0] - pos_dict[12][0]) < 20):
                 print("clk")
                 pm.go_to(1) #go to clock
-            if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[8][0] - pos_dict[12][0]) < 20 and abs(pos_dict[12][0] - pos_dict[16][0]) < 20):
+            if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[8][0] - pos_dict[12][0]) < 20 and abs(pos_dict[20][0] - pos_dict[16][0]) < 20):
                 print('canvas')
                 pm.go_to(2) #go to canvas
             if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) > height/2):
