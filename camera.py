@@ -85,7 +85,7 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
                         # print(pixelCoordinatesLandmark)
                         pos_dict[point] = pixelCoordinatesLandmark
         for i in range(0,20,4):
-            print(str(i) + ": " + pos_dict[i])
+            print(str(i) + ": " + str(pos_dict[i]))
         if(pos_dict[0] and pos_dict[8] and pos_dict[12] and pos_dict[16] and pos_dict[20]):
             height = max(abs(pos_dict[12][1] - pos_dict[0][1]),abs(pos_dict[8][1] - pos_dict[0][1]),abs(pos_dict[16][1] - pos_dict[0][1]),abs(pos_dict[20][1] - pos_dict[0][1]))
             if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[8][0] - pos_dict[12][0]) < 20):
