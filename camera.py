@@ -86,11 +86,12 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
                         pos_dict[point] = pixelCoordinatesLandmark
         if(pos_dict[0] and pos_dict[8] and pos_dict[12] and pos_dict[16] and pos_dict[20]):
             height = max(abs(pos_dict[12][1] - pos_dict[0][1]),abs(pos_dict[8][1] - pos_dict[0][1]),abs(pos_dict[16][1] - pos_dict[0][1]),abs(pos_dict[20][1] - pos_dict[0][1]))
-            up_dict = {0:False,4:False,8:abs(pos_dict[8][1] - pos_dict[0][1]) > height/2,  12:abs(pos_dict[12][1] - pos_dict[0][1]) > height/2,  16:abs(pos_dict[20][1] - pos_dict[0][1]) > height/2,  20:abs(pos_dict[16][1] - pos_dict[0][1]) < height/2}
+            up_dict = {0:False,4:False,8:abs(pos_dict[8][1] - pos_dict[0][1]) > height/2,  12:abs(pos_dict[12][1] - pos_dict[0][1]) > height/2,  16:abs(pos_dict[20][1] - pos_dict[0][1]) > height/2,  20:abs(pos_dict[16][1] - pos_dict[0][1]) > height/2}
             for i in range(0,21,4):
                 print(up_dict[i])
+            print("height = " + str(height))
             print('--------------------------------')
-            
+
             if(up_dict[8] and up_dict[12] and not up_dict[16] and not up_dict[20] and abs(pos_dict[8][0] - pos_dict[12][0]) < height/4):
                 print("clk")
                 pm.go_to(1) #go to clock
