@@ -87,14 +87,18 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
         if(pos_dict[0] and pos_dict[8] and pos_dict[12] and pos_dict[16] and pos_dict[20]):
             for i in range(0,21,4):
                 print(str(i) + ": " + str(pos_dict[i]))
+
+            
+
             height = max(abs(pos_dict[12][1] - pos_dict[0][1]),abs(pos_dict[8][1] - pos_dict[0][1]),abs(pos_dict[16][1] - pos_dict[0][1]),abs(pos_dict[20][1] - pos_dict[0][1]))
-            if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[8][0] - pos_dict[12][0]) < 20):
+            up_dict = {0:False,4:False,8:abs(pos_dict[8][1] - pos_dict[0][1]) > height/2,  12:abs(pos_dict[12][1] - pos_dict[0][1]) > height/2,  16:abs(pos_dict[20][1] - pos_dict[0][1]) > height/2,  20:abs(pos_dict[16][1] - pos_dict[0][1]) < height/2}
+            if(up_dict[8] and up_dict[12] and not up_dict[16] and not up_dict[20] and abs(pos_dict[8][0] - pos_dict[12][0]) < height/4):
                 print("clk")
                 pm.go_to(1) #go to clock
-            if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[8][0] - pos_dict[12][0]) < 20 and abs(pos_dict[20][0] - pos_dict[16][0]) < 20):
+            if(up_dict[8] and up_dict[12] and up_dict[16] and up_dict[20] and abs(pos_dict[8][0] - pos_dict[12][0]) < height/4 and abs(pos_dict[20][0] - pos_dict[16][0]) < height/4 and abs(pos_dict[12][0] - pos_dict[16][0]) > height/4):
                 print('canvas')
                 pm.go_to(2) #go to canvas
-            if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) > height/2):
+            if(up_dict[8] and not up_dict[12] and not up_dict[16] and up_dict[20]):
                 print('off')
                 pm.go_to(0) #turn off
 
