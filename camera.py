@@ -90,16 +90,15 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
             if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[8][0] - pos_dict[12][0]) < 20):
                 print("clk")
                 pm.go_to(1) #go to clock
-            elif(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[8][0] - pos_dict[12][0]) < 20 and abs(pos_dict[12][0] - pos_dict[16][0]) < 20):
+            if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[8][0] - pos_dict[12][0]) < 20 and abs(pos_dict[12][0] - pos_dict[16][0]) < 20):
                 print('canvas')
                 pm.go_to(2) #go to canvas
-            elif(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) > height/2):
+            if(abs(pos_dict[8][1] - pos_dict[0][1]) > height/2 and abs(pos_dict[12][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[16][1] - pos_dict[0][1]) < height/2 and abs(pos_dict[20][1] - pos_dict[0][1]) > height/2):
                 print('off')
-                pm.go_to(0) #go to canvas
+                pm.go_to(0) #turn off
 
                         
                         
-        
         #Below shows the current frame to the desktop 
         # cv2.imshow("Frame", frame1)
         # key = cv2.waitKey(1) & 0xFF
