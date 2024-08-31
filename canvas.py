@@ -22,4 +22,4 @@ def get_content():
 def run_canvas(device):
     with canvas(device) as draw:
         content = get_content()
-        draw.text((0,0),content[0].name,fill="white")
+        draw.text((0,0),content[1].name,fill="white")

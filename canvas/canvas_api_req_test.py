@@ -1,5 +1,4 @@
 from canvasapi import Canvas
-import button2
 
 api_url_string = "apiurl"
 api_key_string = "apikey"
@@ -15,13 +14,13 @@ def read_envfile():
 
 
 envdict = read_envfile()
-# print(envdict[api_url_string])
+print(envdict[api_url_string])
 
 canvas = Canvas(envdict[api_url_string], envdict[api_key_string])
 stuff = canvas.get_courses()
+
 for thing in stuff:
     try:
-        print(thing)
+        print(thing.name)
     except:
         continue
-button2.go(stuff[0])
