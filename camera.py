@@ -98,7 +98,7 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
             elif(up_dict[8] and up_dict[12] and up_dict[16] and not up_dict[20]):
                 print('canvas')
                 pm.go_to(2) #go to canvas
-            elif(up_dict[8] and up_dict[12] and up_dict[16] and not up_dict[20]):
+            elif(up_dict[8] and not up_dict[12] and not up_dict[16] and not up_dict[20]):
                 print('weather')
                 pm.go_to(3) #go to weather
             elif(up_dict[8] and not up_dict[12] and not up_dict[16] and up_dict[20]):
