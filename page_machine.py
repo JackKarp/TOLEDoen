@@ -20,3 +20,14 @@ class PageMachine():
 
         # Checks for a flag object in the current page and runs it into the enter_func if there is one
         self.current_state.on_enter_func(self.device)
+        
+    def go_to(self, index):
+        if(self.current_index != index):
+            self.current_index = index
+            self.current_index = self.current_index % len(self.states)
+            self.current_state = self.states[self.current_index]
+            print(self.current_state.name)
+
+            # Checks for a flag object in the current page and runs it into the enter_func if there is one
+            self.current_state.on_enter_func(self.device)
+    
