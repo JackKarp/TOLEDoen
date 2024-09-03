@@ -38,6 +38,9 @@ def run_weather(device):
     data_forecast = get_data()
     next_forecast = data_forecast['properties']['periods'].pop(0)
     time = int(next_forecast["startTime"].split('T')[1].split(":")[0])
+    if time > 12:
+        time = time % 12
+        time = str(time) + "pm"
     temp = str(next_forecast["temperature"]) + next_forecast["temperatureUnit"]
     rain = int(next_forecast["probabilityOfPrecipitation"]["value"])
     short = next_forecast["shortForecast"]
