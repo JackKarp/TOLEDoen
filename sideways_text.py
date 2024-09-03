@@ -5,16 +5,16 @@ def wrapped_text(string):
     new_words = []
     for i, word in enumerate(words):
         if len(word) > 10:
-            if len(word) > 20:
-                new_words.append(word[0:11])
+            if len(word) >= 20:
+                new_words.append(word[0:12])
                 # offset += 10
-                new_words.append(word[11:21])
+                new_words.append(word[12:23])
                 # offset += 10
-                new_words.append(word[21:-1])
+                new_words.append(word[23:-1])
             else:
-                new_words.append(word[0:11])
+                new_words.append(word[0:12])
                 # offset += 10
-                new_words.append(word[11:-1])
+                new_words.append(word[12:-1])
         else:
             new_words.append(word)
     return "\n".join(new_words) #, offset
