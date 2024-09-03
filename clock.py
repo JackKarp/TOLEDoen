@@ -32,7 +32,7 @@ def render_clock(device):
 
             margin = 3
 
-            cx = 30
+            cx = min(device.width, 60) / 2
             cy = min(device.height, 64) / 2
 
             left = cx - cy
@@ -52,8 +52,8 @@ def render_clock(device):
             draw.line((cx, cy, cx + mins[0], cy + mins[1]), fill="white")
             draw.line((cx, cy, cx + secs[0], cy + secs[1]), fill="red")
             draw.ellipse((cx - 2, cy - 2, cx + 2, cy + 2), fill="white", outline="white")
-            draw.text((2 * (cx + margin), cy - 12), today_date, fill="yellow")
-            draw.text((2 * (cx + margin), cy), today_time, fill="yellow")
+            draw.text((margin, 2 * (cy + margin)), today_date, fill="yellow")
+            draw.text((margin, 2 * (cy + margin) + 10), today_time, fill="yellow")
 
 
 def run_clock(device, page):

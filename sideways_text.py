@@ -9,9 +9,9 @@ def wrapped_text(string, device):
                 if len(word) > 20:
                     draw.text((0,10*i + offset),word[0:11],fill="white")
                     offset += 10
-                    draw.text((0,10*i + offset),word[11:-1],fill="white")
+                    draw.text((0,10*i + offset),word[11:21],fill="white")
                     offset += 10
-                    draw.text((0,10*i + offset),word[11:-1],fill="white")
+                    draw.text((0,10*i + offset),word[21:-1],fill="white")
                 else:
                     draw.text((0,10*i + offset),word[0:11],fill="white")
                     offset += 10
