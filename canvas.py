@@ -22,6 +22,7 @@ def get_content():
 
 def run_canvas(device):
     content = get_content()
+    content = [i for i in content if not i.access_restricted_by_date]
     lines = wrapped_text(content[1].name)
     with canvas(device) as draw:
         draw.text((3, 3),lines, fill="white")
