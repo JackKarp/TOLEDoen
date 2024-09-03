@@ -1,5 +1,6 @@
 from canvasapi import Canvas
 from luma.core.render import canvas
+from sideways_text import wrapped_text
 
 api_url_string = "apiurl"
 api_key_string = "apikey"
@@ -20,6 +21,5 @@ def get_content():
     return canvas.get_courses()
 
 def run_canvas(device):
-    with canvas(device) as draw:
-        content = get_content()
-        draw.text((0,0),content[1].name,fill="white")
+    content = get_content()
+    wrapped_text(content[1], device)
