@@ -46,7 +46,7 @@ def run_weather(device):
         string = string + f"Rain Chance: {rain}"
     lines = wrapped_text(string)
     with canvas(device) as draw:
-        draw.text((3, i*10),lines, fill="white")
+        draw.text((3, 3),lines, fill="white")
         # for i, line in enumerate(lines):
         #     draw.text((3, i*10),line, fill="white")
 

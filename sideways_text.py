@@ -17,4 +17,4 @@ def wrapped_text(string):
                 new_words.append(word[11:-1])
         else:
             new_words.append(word)
-    return new_words.join("\n") #, offset
+    return "\n".join(new_words) #, offset
