@@ -39,10 +39,10 @@ def make_page_list():
 
 should_cycle = False
 
-async def clean_cycle(pin):
+def clean_cycle(pin):
     # print("Callback called")
     global pm
-    await pm.cycle()
+    pm.cycle()
 
 def init_pins(pin):
     GPIO.setwarnings(False) # Ignore warning for now
@@ -50,7 +50,7 @@ def init_pins(pin):
     GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN) # Set pin 10 to be an input pin and set initial value to be pulled low (off)
 
     serial = spi(port=0, address=0)
-    return ssd1309(serial)
+    return ssd1309(serial, rotate=3)
 
 pages = make_page_list()
 d = init_pins(button_pin)
