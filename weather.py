@@ -50,7 +50,7 @@ def run_weather(device):
     lines = wrapped_text(string)
     lines = ': '.join(lines.split(':'))
     with canvas(device) as draw:
-        draw.text((3, 3),lines, fill="white",align='center',stroke_width=3)
+        draw.text((3, 3),lines, fill="white",align='center',font_size=3)
         # for i, line in enumerate(lines):
         #     draw.text((3, i*10),line, fill="white")
 
