@@ -1,8 +1,7 @@
 from luma.core.render import canvas
 
-def wrapped_text(string, device):
+def wrapped_text(string, device, offset=0):
     words = string.split(' ')
-    offset = 0
     with canvas(device) as draw:
         for i, word in enumerate(words):
             if len(word) > 10:
@@ -18,3 +17,4 @@ def wrapped_text(string, device):
                     draw.text((0,10*i + offset),word[11:-1],fill="white")
             else:
                 draw.text((0,10*i + offset),word,fill="white")
+    return offset
