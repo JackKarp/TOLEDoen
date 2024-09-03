@@ -41,7 +41,7 @@ def run_weather(device):
     temp = str(next_forecast["temperature"]) + next_forecast["temperatureUnit"]
     rain = int(next_forecast["probabilityOfPrecipitation"]["value"])
     short = next_forecast["shortForecast"]
-    string = f"Time: {time}Temp: {temp}\nfDescription: {short}"
+    string = f"Time:{time}\nTemp:{temp}\nDescription:{short}"
     if rain > 30:
         string = string + f"Rain Chance: {rain}"
     lines = wrapped_text(string)
