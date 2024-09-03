@@ -1,6 +1,7 @@
 from urllib.request import urlopen
 import json
 
+from luma.core.render import canvas
 from sideways_text import wrapped_text
 
 def read_envfile():
@@ -40,12 +41,12 @@ def run_weather(device):
     temp = str(next_forecast["temperature"]) + next_forecast["temperatureUnit"]
     rain = int(next_forecast["probabilityOfPrecipitation"]["value"])
     short = next_forecast["shortForecast"]
-
-    offset = 0
-    offset = wrapped_text(f"Time: {time}", device, offset)
-    offset = wrapped_text(f"Temperature: {temp}", device, offset)
+    string = f"Time: {time}\nTemperature: {temp}\nfDescription: {short}"
     if rain > 30:
-        offset = wrapped_text(f"Rain Chance: {rain}", device, offset)
-    offset = wrapped_text(f"Description: {short}", device, offset)
+        string = string + f"Rain Chance: {rain}"
+    lines = wrapped_text(string)
+    with canvas(device) as draw:
+        for i, line in enumerate(lines):
+            draw.text((3, i*10),line)
 
 
