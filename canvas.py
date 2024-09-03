@@ -22,8 +22,8 @@ def get_content():
 
 def run_canvas(device):
     content = get_content()
-    # content = [i for i in content if not i.is_public]
-    lines = wrapped_text(content[1].name)
+    content = [i.name for i in content if not hasattr(i, "access_restricted_by_date")]
+    lines = wrapped_text(content[0].name)
     with canvas(device) as draw:
         draw.text((3, 3),lines, fill="white")
         # for i, line in enumerate(lines):
