@@ -12,6 +12,7 @@ from luma.oled.device import ssd1309
 from clock import render_clock
 from canvas import run_canvas
 from off import clear_display
+from weather import run_weather
 import select
 
 print("Running main")
@@ -34,7 +35,7 @@ def make_page_list():
     page_list.append(Page("Off", on_enter_func= clear_display))
     page_list.append(Page("Clock", on_enter_func= render_clock, while_running_func=wrap_with_delay(render_clock,0.1)))
     page_list.append(Page("Canvas", on_enter_func=run_canvas))
-    page_list.append(Page("Weather", on_enter_func=lambda x: x))
+    page_list.append(Page("Weather", on_enter_func=run_weather))
     return page_list
 
 should_cycle = False
