@@ -47,6 +47,6 @@ def run_weather(device):
     lines = wrapped_text(string)
     with canvas(device) as draw:
         for i, line in enumerate(lines):
-            draw.text((3, i*10),line)
+            draw.text((3, i*10),line, fill="white")
 
 

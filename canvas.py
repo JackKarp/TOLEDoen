@@ -25,4 +25,4 @@ def run_canvas(device):
     lines = wrapped_text(content[1].name)
     with canvas(device) as draw:
         for i, line in enumerate(lines):
-            draw.text((3, i*10),line)
+            draw.text((3, i*10),line, fill="white")
