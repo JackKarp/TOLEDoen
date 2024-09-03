@@ -8,9 +8,9 @@ def wrapped_text(string):
             if len(word) >= 20:
                 new_words.append(word[0:12])
                 # offset += 10
-                new_words.append(word[12:23])
+                new_words.append(word[12:24])
                 # offset += 10
-                new_words.append(word[23:-1])
+                new_words.append(word[24:-1])
             else:
                 new_words.append(word[0:12])
                 # offset += 10
