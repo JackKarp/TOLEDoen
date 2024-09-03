@@ -41,12 +41,13 @@ def run_weather(device):
     temp = str(next_forecast["temperature"]) + next_forecast["temperatureUnit"]
     rain = int(next_forecast["probabilityOfPrecipitation"]["value"])
     short = next_forecast["shortForecast"]
-    string = f"Time: {time}\nTemperature: {temp}\nfDescription: {short}"
+    string = f"Time: {time}Temp: {temp}\nfDescription: {short}"
     if rain > 30:
         string = string + f"Rain Chance: {rain}"
     lines = wrapped_text(string)
     with canvas(device) as draw:
-        for i, line in enumerate(lines):
-            draw.text((3, i*10),line, fill="white")
+        draw.text((3, i*10),lines, fill="white")
+        # for i, line in enumerate(lines):
+        #     draw.text((3, i*10),line, fill="white")
 
 
