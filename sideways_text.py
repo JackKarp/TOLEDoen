@@ -10,11 +10,11 @@ def wrapped_text(string):
                 # offset += 10
                 new_words.append(word[12:24])
                 # offset += 10
-                new_words.append(word[24:-0])
+                new_words.append(word[24:len(word)])
             else:
                 new_words.append(word[0:12])
                 # offset += 10
-                new_words.append(word[12:-0])
+                new_words.append(word[12:len(word)])
         else:
             new_words.append(word)
     return "\n".join(new_words) #, offset
