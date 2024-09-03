@@ -23,7 +23,7 @@ def get_content():
 def run_canvas(device):
     content = get_content()
     content = [i.name for i in content if not hasattr(i, "access_restricted_by_date")]
-    lines = wrapped_text(content[0].name)
+    lines = wrapped_text(content[0])
     with canvas(device) as draw:
         draw.text((3, 3),lines, fill="white")
         # for i, line in enumerate(lines):
