@@ -1,9 +1,8 @@
-from luma.core.render import canvas
-
 def wrapped_text(string):
     new_words = []
-    for i in range(0, len(string), 10):
-        new_words.append(string[i:i+10])
+    for word in [j for j in string.split("\n")]:
+        for i in range(0, len(word), 10):
+            new_words.append(word[i:i+10])
     # if len(string) > 10:
     #     if len(word) >= 20:
     #         new_words.append(word[0:12])
