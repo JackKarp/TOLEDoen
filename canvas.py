@@ -22,4 +22,4 @@ def get_content():
 
 def run_canvas(device):
     content = get_content()
-    wrapped_text(content[1], device)
+    wrapped_text(content[1].name, device)
