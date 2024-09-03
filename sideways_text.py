@@ -1,6 +1,6 @@
 from luma.core.render import canvas
 
-def wrapped_text(string, device, offset=0):
+def wrapped_text(string):
     words = string.split(' ')
     new_words = []
     for i, word in enumerate(words):
