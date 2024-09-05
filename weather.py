@@ -54,7 +54,7 @@ def run_weather(device):
         draw.text((0,20),temp, fill = "white",align='center',font_size=36)
         draw.text((56 - 8*len(short), 70),short, fill = "white",align='center',font_size=10)
         if rain > 30:
-            draw.text((49 - 8*len(rain + 1), 85),rain + "%", fill = "white",align='center',font_size=10)
+            draw.text((49 - 8*len(str(rain + 1)), 85),rain + "%", fill = "white",align='center',font_size=10)
         # for i, line in enumerate(lines):
         #     draw.text((3, i*10),line, fill="white")
 
