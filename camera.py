@@ -58,7 +58,7 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
 
 
         ret, frame = cap.read()
-        print(cap.get(3) + ", " + cap.get(4))
+        print(str(cap.get(3)) + ", " + str(cap.get(4)))
            #Unedit the below line if your live feed is produced upsidedown
            #flipped = cv2.flip(frame, flipCode = -1)
            
