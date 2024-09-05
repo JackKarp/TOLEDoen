@@ -37,7 +37,7 @@ def get_data():
 def run_weather(device):
     data_forecast = get_data()
     next_forecast = data_forecast['properties']['periods'].pop(0)
-    time = str(int(next_forecast["startTime"].split('T')[1].split(":")[0]))
+    time = int(next_forecast["startTime"].split('T')[1].split(":")[0])
     if time > 12:
         time = time % 12
         time = str(time) + "pm"
@@ -50,7 +50,7 @@ def run_weather(device):
     # lines = wrapped_text(string)
     # lines = ': '.join(lines.split(':'))
     with canvas(device) as draw:
-        draw.text((49 - 8*len(time), 3),time, fill="white",align='center',font_size=10)
+        draw.text((49 - 8*len(str(time)), 3),time, fill="white",align='center',font_size=10)
         draw.text((0,20),temp, fill = "white",align='center',font_size=36)
         draw.text((56 - 8*len(short), 70),short, fill = "white",align='center',font_size=10)
         if rain > 30:
