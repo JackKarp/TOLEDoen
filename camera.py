@@ -20,7 +20,7 @@ handsModule = mediapipe.solutions.hands
 
 #Use CV2 Functionality to create a Video stream and add some values
 cap = cv2.VideoCapture(0)
-fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
+# fourcc = cv2.VideoWriter_fourcc('m', 'p', '4', 'v')
 
 def wrap_with_delay(f1, delay):
     def f2(device):
@@ -53,11 +53,12 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
 
 #Create an infinite loop which will produce the live feed to our desktop and that will search for hands
     while True:
-        #run whjile running of current state
+        #run while_running of current state
         pm.current_state.while_running_func(pm.device)
 
 
         ret, frame = cap.read()
+        print(cap.get(3) + ", " + cap.get(4))
            #Unedit the below line if your live feed is produced upsidedown
            #flipped = cv2.flip(frame, flipCode = -1)
            
