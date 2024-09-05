@@ -49,7 +49,7 @@ pm = PageMachine(pages, device=device)
 #Add confidence values and extra settings to MediaPipe hand tracking. As we are using a live video stream this is not a static
 #image mode, confidence values in regards to overall detection and tracking and we will only let two hands be tracked at the same time
 #More hands can be tracked at the same time if desired but will slow down the system
-with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, min_tracking_confidence=0.7, max_num_hands=2) as hands:
+with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, min_tracking_confidence=0.7, max_num_hands=1) as hands:
 
 #Create an infinite loop which will produce the live feed to our desktop and that will search for hands
     while True:
