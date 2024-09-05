@@ -66,14 +66,14 @@ with handsModule.Hands(static_image_mode=False, min_detection_confidence=0.7, mi
         # frame1 = cv2.resize(frame, (320, 240))
            
            #Produces the hand framework overlay ontop of the hand, you can choose the colour here too)
-        results = hands.process(cv2.cvtColor(frame1, cv2.COLOR_BGR2RGB))
+        results = hands.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
 
         pos_dict = {0:(0,0),4:(0,0),8:(0,0),12:(0,0),16:(0,0),20:(0,0)}
            
            #In case the system sees multiple hands this if statment deals with that and produces another hand overlay
         if results.multi_hand_landmarks != None:
             for handLandmarks in results.multi_hand_landmarks:
-                drawingModule.draw_landmarks(frame1, handLandmarks, handsModule.HAND_CONNECTIONS)
+                drawingModule.draw_landmarks(frame, handLandmarks, handsModule.HAND_CONNECTIONS)
                 
                 #Below is Added Code to find and print to the shell the Location X-Y coordinates of Index Finger, Uncomment if desired
                 for point in handsModule.HandLandmark:
